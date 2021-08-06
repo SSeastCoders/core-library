@@ -1,14 +1,16 @@
 package com.ss.eastcoderbank.core.model.account;
 
+import com.ss.eastcoderbank.core.model.user.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
-@MappedSuperclass
+@Entity
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -21,21 +23,26 @@ public class Account {
     @Id
     protected Integer id;
 
-    @Column(nullable = false, length = 10)
-    protected String accountType;
+    @Enumerated
+    @Column(nullable = false, name = "type_id")
+    protected AccountType accountType;
 
     // CANNOT REFERENCE OBJECT SELF, NEED TO COMMUNICATE OTHER WAY TO KEEP SEPARATE
-    @Column(nullable = false)
-    protected Integer userID;
+    @OneToMany
+    @JoinTable(
+            name = "account_users",
+            joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    protected List<User> users;
 
     @Column(nullable = false)
     protected Double interestRate;
 
     @Column(nullable = false)
-    protected Date openDate;
+    protected LocalDate openDate;
 
     @Column(nullable = false)
-    protected Float currentBalance;
+    protected Float balance;
 
     @Column(nullable = false)
     protected Boolean activeStatus;
