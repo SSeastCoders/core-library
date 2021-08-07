@@ -28,7 +28,7 @@ public class Account {
     protected AccountType accountType;
 
     // CANNOT REFERENCE OBJECT SELF, NEED TO COMMUNICATE OTHER WAY TO KEEP SEPARATE
-    @OneToMany
+    @ManyToMany
     @JoinTable(
             name = "account_users",
             joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "user_id")

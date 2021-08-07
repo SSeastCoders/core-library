@@ -1,7 +1,6 @@
 package com.ss.eastcoderbank.core.transferdto;
 
 import com.ss.eastcoderbank.core.model.account.AccountType;
-import com.ss.eastcoderbank.core.model.user.User;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -13,7 +12,7 @@ public class AccountDto {
 
     private AccountType accountType;
 
-    private List<User> users;
+    private List<UserDto> users;
 
     private Double interestRate;
 
