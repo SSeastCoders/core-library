@@ -29,7 +29,7 @@ public class UserDto {
 
     private LocalDate dateJoined;
 
-    private boolean activeStatus;
+    private Boolean activeStatus;
 
     private String username;
 }

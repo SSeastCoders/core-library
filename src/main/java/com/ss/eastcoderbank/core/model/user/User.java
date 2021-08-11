@@ -49,7 +49,7 @@ public class User {
     private LocalDate dateJoined;
 
     @Column(name = "active_status")
-    private boolean activeStatus;
+    private Boolean activeStatus;
 
     @Embedded
     private Credential credential;
