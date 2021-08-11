@@ -21,4 +21,6 @@ public class AccountDto {
     private Float balance;
 
     private Boolean activeStatus;
+
+    private String nickName;
 }

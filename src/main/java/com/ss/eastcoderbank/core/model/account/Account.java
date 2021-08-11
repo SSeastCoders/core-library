@@ -27,7 +27,9 @@ public class Account {
     @Column(nullable = false, name = "type_id")
     protected AccountType accountType;
 
-    // CANNOT REFERENCE OBJECT SELF, NEED TO COMMUNICATE OTHER WAY TO KEEP SEPARATE
+    @Column(nullable = false, length = 20)
+    protected String nickName;
+
     @ManyToMany
     @JoinTable(
             name = "account_users",
