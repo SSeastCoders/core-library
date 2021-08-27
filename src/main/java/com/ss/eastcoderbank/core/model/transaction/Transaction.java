@@ -4,7 +4,7 @@ import com.ss.eastcoderbank.core.model.account.Account;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -16,7 +16,7 @@ public class Transaction {
     @ManyToOne(fetch = FetchType.LAZY)
     private Account account;
 
-    private Double amount;
+    private Float amount;
 
     private String description;
 
@@ -24,7 +24,7 @@ public class Transaction {
     @Column(name = "type_id")
     private TransactionType type;
 
-    private LocalDateTime date;
+    private LocalDate date;
 
     private Boolean pending;
 
