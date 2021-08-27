@@ -1,20 +1,14 @@
 package com.ss.eastcoderbank.core.model.account;
 
 import com.ss.eastcoderbank.core.model.user.User;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@RequiredArgsConstructor
-@ToString
+@Data
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Account {
 

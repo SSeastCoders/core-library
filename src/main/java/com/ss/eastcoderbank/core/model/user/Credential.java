@@ -8,9 +8,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@Setter
-@Getter
+@Data
 public class Credential {
 
     @Column(nullable = false, length = 50)

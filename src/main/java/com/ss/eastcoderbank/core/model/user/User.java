@@ -8,11 +8,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@Setter
+@Data
 @Table(uniqueConstraints = {
         @UniqueConstraint(name = UserConstraints.EMAILANDUSERNAME, columnNames = {"email", "username"}),
         @UniqueConstraint(name = UserConstraints.EMAIL, columnNames = {"email"}),

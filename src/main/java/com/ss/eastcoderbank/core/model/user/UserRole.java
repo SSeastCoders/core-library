@@ -9,11 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Getter
-@EqualsAndHashCode
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class UserRole {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
