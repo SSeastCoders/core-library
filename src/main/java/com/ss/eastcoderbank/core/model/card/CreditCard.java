@@ -6,9 +6,11 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class CreditCard implements Card{
 
     // generation strategies to make fit card pattern
@@ -70,5 +72,25 @@ public class CreditCard implements Card{
     protected Float minDue;
 
     //? Autogenerate 4 digit card number
+
+    public CreditCard(List<User> users, String nickName) {
+        this.setUsers(users);
+        this.setNickName(nickName);
+        this.DefaultCredit();
+    }
+
+    public void DefaultCredit(){
+        //this.setCvv();
+        this.setCardType(CardType.CREDIT);
+        this.setOpenDate(LocalDate.now());
+        this.setExpDate(this.getOpenDate().plusYears(3));
+        //ADJUST WHEN ACTIVATION PROTOCOL MADE
+        this.setActiveStatus(true);
+        this.setInterestRate(0.01);
+        this.setAvailableCredit(600.00F);
+        this.setBalance(0F);
+        this.setDueDate(this.getOpenDate().plusMonths(1));
+        this.setMinDue(25F);
+    }
 
 }

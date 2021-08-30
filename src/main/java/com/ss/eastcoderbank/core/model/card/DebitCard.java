@@ -2,6 +2,7 @@ package com.ss.eastcoderbank.core.model.card;
 
 import com.ss.eastcoderbank.core.model.user.User;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,6 +17,10 @@ public class DebitCard implements Card {
     @Column(nullable = false)
     @Id
     protected Integer id;
+
+    @GenericGenerator(name = "swipe", strategy = "com.ss.eastcoderbank.core.model.SwipeGenerator")
+    @GeneratedValue(generator = "swipe")
+    protected Integer swipe;
 
     @ManyToMany
     @JoinTable(
