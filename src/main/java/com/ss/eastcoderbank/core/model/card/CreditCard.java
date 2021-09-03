@@ -2,6 +2,7 @@ package com.ss.eastcoderbank.core.model.card;
 
 import com.ss.eastcoderbank.core.model.user.User;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,15 +23,19 @@ public class CreditCard implements Card{
 
     @ManyToMany
     @JoinTable(
-            name = "card_users",
+            name = "credit_users",
             joinColumns = @JoinColumn(name = "card_id"), inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     protected List<User> users;
 
     // ###
-    @GeneratedValue
-    @Column(nullable = false)
-    protected Integer cvv;
+    @Column(length = 3, nullable = false)
+    protected String cvv;
+
+    @GenericGenerator(name = "swipe", strategy = "com.ss.eastcoderbank.core.model.card.SwipeGenerator")
+    @GeneratedValue(generator = "swipe")
+    @Column(name = "swipe")//nullable=false
+    protected String swipe;
 
     @Enumerated
     @Column(nullable = false, name = "type_id")
@@ -49,8 +54,6 @@ public class CreditCard implements Card{
 
     @Column(nullable = false)
     protected Boolean activeStatus;
-
-    //??account
 
     @Column(nullable = false)
     protected Double interestRate;
@@ -80,7 +83,7 @@ public class CreditCard implements Card{
     }
 
     public void DefaultCredit(){
-        //this.setCvv();
+        Random r = new Random();
         this.setCardType(CardType.CREDIT);
         this.setOpenDate(LocalDate.now());
         this.setExpDate(this.getOpenDate().plusYears(3));
@@ -91,6 +94,9 @@ public class CreditCard implements Card{
         this.setBalance(0F);
         this.setDueDate(this.getOpenDate().plusMonths(1));
         this.setMinDue(25F);
+        this.setCreditLimit(600.00F);
+        this.setCvv("" + r.nextInt(10) + r.nextInt(10) + r.nextInt(10));
+
     }
 
 }

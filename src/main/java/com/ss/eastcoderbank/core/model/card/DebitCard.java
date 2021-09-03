@@ -24,7 +24,7 @@ public class DebitCard implements Card {
 
     @ManyToMany
     @JoinTable(
-            name = "card_users",
+            name = "debit_users",
             joinColumns = @JoinColumn(name = "card_id"), inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     protected List<User> users;
