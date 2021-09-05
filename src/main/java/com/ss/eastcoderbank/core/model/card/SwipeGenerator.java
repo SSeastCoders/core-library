@@ -31,7 +31,7 @@ public class SwipeGenerator implements IdentifierGenerator {
         return NUMBERS.charAt(r.nextInt(NUMBERS.length()));
     }
 
-    String randomSwipe(int length, int spacing, char spacerChar){
+    public String randomSwipe(int length, int spacing, char spacerChar){
         StringBuilder sb = new StringBuilder();
         while(length > 0){
             int spacer = 0;
