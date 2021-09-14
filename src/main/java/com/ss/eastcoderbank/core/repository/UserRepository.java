@@ -20,7 +20,15 @@ public interface UserRepository extends JpaRepository <User, Integer> {
 
     User findByCredentialUsername(String username);
 
-    @Query(value = "SELECT a FROM User a WHERE CONCAT(a.firstName, ' ', a.lastName, ' ', a.credential.username, ' ', a.email) LIKE %?1%", countQuery = "SELECT count(a) FROM User a WHERE CONCAT(a.firstName, ' ', a.lastName, ' ', a.credential.username, ' ', a.email) LIKE %?1%")
+   // @Query(value = "SELECT a FROM User WHERE a CONCAT(a.firstName, ' ', a.lastName, ' ', a.credential.username, ' ', a.email) LIKE %?1%", countQuery = "SELECT count(a) FROM User a WHERE CONCAT(a.firstName, ' ', a.lastName, ' ', a.credential.username, ' ', a.email) LIKE %?1%")
+   @Query(value = "select a FROM User a WHERE CONCAT(a.firstName, ' ', a.lastName, ' ', a.credential.username, ' ', a.email) LIKE %?1%", countQuery = "SELECT count(a) FROM User a WHERE CONCAT(a.firstName, ' ', a.lastName, ' ', a.credential.username, ' ', a.email) LIKE %?1%")
+   //@Query("SELECT a FROM User a WHERE " +
+   //        "LOWER(a.credential.username) LIKE LOWER(CONCAT('%',:keyword, '%')) OR " +
+   //        "LOWER(a.firstName) LIKE LOWER(CONCAT('%',:keyword, '%')) OR " +
+    //       "LOWER(a.lastName) LIKE LOWER(CONCAT('%',:keyword, '%'))")
+        //@Query(value = "SELECT * FROM USER WHERE USERNAME = ?1",
+     //       countQuery = "SELECT count(*) FROM USER WHERE USERNAME = ?1",
+     //       nativeQuery = true)
     Page<User> search(String keyword, Pageable page);
 
     /**
