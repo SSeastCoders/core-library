@@ -2,6 +2,7 @@ package com.ss.eastcoderbank.core.model.loan;
 
 import com.ss.eastcoderbank.core.model.account.Account;
 import com.ss.eastcoderbank.core.model.transaction.TransactionType;
+import com.ss.eastcoderbank.core.model.user.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,6 +25,16 @@ public class Loan {
     private Integer id;
 
     private String description;
+
+    @Column(nullable = false, length = 20)
+    protected String nickName;
+
+    @ManyToMany
+    @JoinTable(
+            name = "loan_users",
+            joinColumns = @JoinColumn(name = "loan_id"), inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    protected List<User> users;
 
     @Enumerated
     @Column(name = "type_id")
