@@ -27,6 +27,8 @@ public class LoanDto {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dueDate;
 
+    private Integer loanTerm;
+
     private Float amountLoaned;
 
     private Float amountRemaining;

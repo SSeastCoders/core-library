@@ -44,6 +44,9 @@ public class Loan {
     private LocalDate openDate;
 
     @Column(nullable = false)
+    private Integer loanTerm;
+
+    @Column(nullable = false)
     private LocalDate dueDate;
 
     @Column(nullable = false)
