@@ -6,11 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@Setter
+@Data
 public class Address {
     @Column(length = 50)
     private String streetAddress;
